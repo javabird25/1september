@@ -55,16 +55,12 @@ return [
             'visibility' => 'public',
         ],
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-        ],
-
+        "temporary-photos" => [
+            "driver" => "local",
+            "root" => "/tmp/1september",
+            "url" => env("APP_URL")."/tmp",
+            "visibility" => "public"
+        ]
     ],
 
     /*
@@ -80,6 +76,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('tmp') => "/tmp/1september"
     ],
 
 ];

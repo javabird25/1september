@@ -18,7 +18,7 @@ function resetCheckerInput() {
 }
 
 function resetChecker() {
-    resetCheckerInput
+    resetCheckerInput();
     MESSAGES.CORRECT.hide("fast");
     MESSAGES.WRONG.hide("fast");
 }
@@ -29,7 +29,7 @@ const ANSWER_HANDLERS = {
         CHECKER_INPUT.addClass("correct");
 
         setTimeout(() => {
-            window.location = "/photo";
+            window.location = "/composition";
         }, 1000);
     },
 

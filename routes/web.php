@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view("/", "quiz");
+
+Route::view("/composition", "composition.upload");
+Route::post("/composition", "CompositionController@compose");
