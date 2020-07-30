@@ -18,7 +18,13 @@ button
     color: white
     background-color: colors.$accent-color
     border: colors.$accent-color solid 2px
+    cursor: pointer
 
     &:focus
         outline: none
         border-color: color.scale(colors.$accent-color, $saturation: -50%, $lightness: 50%)
+
+    &[disabled]
+        background-color: colors.$button-disabled
+        border-color: color.scale(colors.$button-disabled, $saturation: -50%, $lightness: 50%)
+        cursor: not-allowed

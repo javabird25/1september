@@ -1,4 +1,5 @@
 @use "button"
+@use "card"
 
 =center
     display: flex
@@ -36,3 +37,42 @@ $frames-height: 175px
         height: auto
         width: auto
         margin: 5px
+
+dialog, .dialog-darken
+    display: none
+
+    &.show
+        display: flex
+
+.dialog-darken
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background-color: transparent
+    justify-content: center
+    align-items: center
+
+    transition: color 0.3s ease
+
+    &.show
+        background-color: #0000005e
+
+.st-btn
+    display: block !important
+
+dialog
+    +card.card
+
+    flex-direction: column
+
+    close-container
+        display: flex
+        justify-content: flex-end
+
+        close
+            font-size: 24pt
+            color: #b5b5b5
+            line-height: 50%
+            cursor: pointer
