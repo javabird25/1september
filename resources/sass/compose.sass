@@ -1,0 +1,38 @@
+@use "button"
+
+=center
+    display: flex
+    justify-content: center
+
+.result-wrapper
+    +center
+
+    height: 500px
+
+    #result
+        object-fit: contain
+
+    #original
+        display: none
+
+.send-wrapper
+    +center
+
+    margin: 2rem
+
+    button
+        font-size: 22pt
+        width: 25%
+
+$frames-height: 175px
+
+.frames
+    display: flex
+    height: $frames-height
+    overflow-x: auto
+
+    img
+        max-height: $frames-height
+        height: auto
+        width: auto
+        margin: 5px

@@ -29,7 +29,7 @@ const ANSWER_HANDLERS = {
         CHECKER_INPUT.addClass("correct");
 
         setTimeout(() => {
-            window.location = "/composition";
+            window.location = "/photocompose/upload";
         }, 1000);
     },
 

@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view("/", "quiz");
 
-Route::view("/composition", "composition.upload");
-Route::post("/composition", "CompositionController@compose");
+Route::group(['prefix' => '/photocompose', 'as' => 'composition.'], function () {
+    Route::view("/upload", "composition.upload")->name("upload");
+    Route::post("/upload", "CompositionController@uploadPhoto");
+    Route::get("/setup", "CompositionController@getSetupForm")->name("setup");
+});

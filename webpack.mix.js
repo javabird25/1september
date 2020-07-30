@@ -11,5 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/checker.js', 'public/js')
-    .sass('resources/sass/quiz.sass', 'public/css');
+mix
+    .js('resources/js/checker.js', 'public/js')
+    .js('resources/js/compose.js', 'public/js')
+    .sass('resources/sass/quiz.sass', 'public/css')
+    .sass('resources/sass/compose.sass', 'public/css')
+    ;

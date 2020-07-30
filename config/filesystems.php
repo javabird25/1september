@@ -55,12 +55,19 @@ return [
             'visibility' => 'public',
         ],
 
-        "temporary-photos" => [
+        "photos" => [
             "driver" => "local",
-            "root" => "/tmp/1september",
-            "url" => env("APP_URL")."/tmp",
+            "root" => storage_path('app/photos'),
+            "url" => env("APP_URL")."/photos",
             "visibility" => "public"
-        ]
+        ],
+
+        "frames" => [
+            "driver" => "local",
+            "root" => storage_path('app/frames'),
+            "url" => env("APP_URL")."/frames",
+            "visibility" => "public"
+        ],
     ],
 
     /*
@@ -76,7 +83,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('tmp') => "/tmp/1september"
+        public_path('photos') => storage_path('app/photos'),
+        public_path('frames') => storage_path('app/frames'),
     ],
 
 ];
