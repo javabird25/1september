@@ -1,5 +1,6 @@
 @use "sass:color"
 @use "sass:selector"
+@use "common"
 @use "no-spinners"
 @use "button"
 @use "card"
@@ -7,12 +8,6 @@
 
 =subtle-shadow
     box-shadow: 0 0 2px colors.$shadow-color
-
-*
-    box-sizing: border-box
-
-    &:focus
-        outline: none
 
 @media(min-width: 426px)
     html

@@ -1,3 +1,4 @@
+import '../css/compose.sass';
 import mergeImages from 'merge-images';
 import $ from 'jquery';
 

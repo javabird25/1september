@@ -1,0 +1,36 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block "head" %}
+    {% render_bundle 'compose' 'css' %}
+{% endblock %}
+
+{% block "body" %}
+    <div class="result-wrapper">
+        <img id="result" src="{% get_media_prefix %}{{ photo.name }}">
+    </div>
+    <div class="frames">
+        {% for frame in frames %}
+            <img src="{% get_static_prefix %}frames/{{ frame }}" onclick="applyFrame(this)">
+        {% endfor %}
+    </div>
+    <div class="send-wrapper">
+        <button id="done" onclick="compositionDone()" disabled>Готово</button>
+    </div>
+
+    <div class="dialog-darken" onclick="setDialogVisible(false)">
+        <dialog onclick="event.stopPropagation()">
+            <close-container><close onclick="setDialogVisible(false)">×</close></close-container>
+            Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:
+            <a class="green-button" id="download" download="Фото с рамкой.png">Скачать</a>
+            У тебя также есть возможность опубликовать фотографию на ?доску?
+            <buttons>
+                <button>Да</button>
+                <button>Нет</button>
+            </buttons>
+        </dialog>
+    </div>
+
+    {% render_bundle 'compose' 'js' %}
+{% endblock %}

@@ -1,5 +1,6 @@
 @use "button"
 @use "card"
+@use "common"
 
 =center
     display: flex
@@ -66,13 +67,26 @@ dialog
     +card.card
 
     flex-direction: column
+    padding: 1rem
 
     close-container
         display: flex
         justify-content: flex-end
+        margin-bottom: 0.7rem
 
         close
             font-size: 24pt
             color: #b5b5b5
             line-height: 50%
             cursor: pointer
+
+.green-button
+    margin-top: 1rem
+    margin-bottom: 1.5rem
+
+buttons
+    display: flex
+    margin: 1rem 0
+
+    button
+        margin: 0 5px
