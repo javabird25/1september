@@ -1,0 +1,5 @@
+django
+libsass
+django-compressor
+django-sass-processor
+django-webpack-loader

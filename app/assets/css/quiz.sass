@@ -1,0 +1,87 @@
+@use "sass:color"
+@use "sass:selector"
+@use "no-spinners"
+@use "button"
+@use "card"
+@use "colors"
+
+=subtle-shadow
+    box-shadow: 0 0 2px colors.$shadow-color
+
+*
+    box-sizing: border-box
+
+    &:focus
+        outline: none
+
+@media(min-width: 426px)
+    html
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    body
+        +card.card
+        width: 75%
+        padding: 1rem
+
+@media(min-width: 729px)
+    body
+        width: 50%
+
+@media(min-width: 1441px)
+    body
+        width: 35%
+
+.embed-container
+    position: relative
+    padding-bottom: 56.25%
+    height: 0
+    overflow: hidden
+    max-width: 100%
+    margin-bottom: 5px
+
+.embed-container iframe, .embed-container object, .embed-container embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+checker
+    +card.card
+
+    $wrong-color: #D32F2F
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 1rem
+
+    input
+        +card.card
+        +subtle-shadow
+        +button.transition
+
+        width: 1.5em
+        margin: 8px 0
+
+        font-size: 20pt
+        text-align: center
+
+        &.correct
+            border-color: colors.$accent-color
+
+        &.wrong
+            border-color: $wrong-color
+
+    message
+        display: none
+
+        margin-bottom: 3px
+
+    & .correct
+        color: colors.$accent-color
+
+    & .wrong
+        color: #D32F2F
