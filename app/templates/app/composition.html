@@ -7,17 +7,26 @@
 {% endblock %}
 
 {% block "body" %}
-    <div class="result-wrapper">
-        <img id="result" src="{% get_media_prefix %}{{ photo.name }}">
-    </div>
-    <div class="frames">
-        {% for frame in frames %}
-            <img src="{% get_static_prefix %}frames/{{ frame }}" onclick="applyFrame(this)">
-        {% endfor %}
-    </div>
-    <div class="send-wrapper">
-        <button id="done" onclick="compositionDone()" disabled>Готово</button>
-    </div>
+    <page>
+        <composition-area>
+            <composition-wrapper>
+                <composition>
+                    <img class="frame">
+                    <img class="photo" src="{% get_media_prefix %}{{ photo.name }}">
+                </composition>
+            </composition-wrapper>
+        </composition-area>
+        <control-area>
+            <div class="frames">
+                {% for frame in frames %}
+                    <img src="{% get_static_prefix %}frames/{{ frame }}" onclick="applyFrame(this)">
+                {% endfor %}
+            </div>
+            <div class="send-wrapper">
+                <button id="done" onclick="compositionDone()" disabled>Готово</button>
+            </div>
+        </control-area>
+    </page>
 
     <div class="dialog-darken" onclick="setDialogVisible(false)">
         <dialog onclick="event.stopPropagation()">

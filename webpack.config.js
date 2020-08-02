@@ -6,7 +6,7 @@ module.exports = {
   context: __dirname,
   entry: {
       quiz: "./app/assets/js/quiz.js",
-      compose: "./app/assets/js/compose.js",
+      compose: "./app/assets/js/compose",
   },
   output: {
       path: path.resolve('./static/webpack/'),

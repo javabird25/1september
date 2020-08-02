@@ -5,17 +5,50 @@
 =center
     display: flex
     justify-content: center
+    align-items: center
 
-.result-wrapper
+body
+    margin: 0
+
+page
+    display: flex
+    width: 100vw
+    height: 100vh
+    flex-direction: column
+
+composition-area
+    +center
+    height: 65vh
+
+control-area
+    height: 35vh
+
+@media(max-width: 1024px)
+    composition-area
+        height: 55vh
+
+    control-area
+        height: 45vh
+
+composition-wrapper
     +center
 
-    height: 500px
+    composition
+        $height: 50vh
 
-    #result
-        object-fit: contain
+        height: $height
 
-    #original
-        display: none
+        +center
+        position: relative
+
+        .frame
+            position: absolute
+            left: 0
+            top: 0
+
+        img
+            max-height: $height
+            max-width: 95vw
 
 .send-wrapper
     +center
@@ -26,18 +59,17 @@
         font-size: 22pt
         width: 25%
 
-$frames-height: 175px
-
 .frames
     display: flex
-    height: $frames-height
+    height: 50vw
+    max-height: 175px
     overflow-x: auto
+    margin: 2rem 0
 
     img
-        max-height: $frames-height
-        height: auto
         width: auto
-        margin: 5px
+        height: 100%
+        margin: 0 5px
 
 dialog, .dialog-darken
     display: none
@@ -81,8 +113,9 @@ dialog
             cursor: pointer
 
 .green-button
-    margin-top: 1rem
-    margin-bottom: 1.5rem
+    margin:
+        top: 1rem
+        bottom: 1.5rem
 
 buttons
     display: flex
@@ -90,3 +123,11 @@ buttons
 
     button
         margin: 0 5px
+
+@media(max-width: 580px)
+    .send-wrapper button
+        width: 50% !important
+
+@media(max-width: 425px)
+    .send-wrapper button
+        width: 75% !important
