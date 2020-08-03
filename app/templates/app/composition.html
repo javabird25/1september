@@ -9,6 +9,7 @@
 {% block "body" %}
     <page>
         <composition-area>
+            <img class="photo" src="{% get_media_prefix %}{{ photo.name }}">
             <canvas class="result" data-photo-src="{% get_media_prefix %}{{ photo.name }}"></canvas>
         </composition-area>
         <control-area>
@@ -23,7 +24,6 @@
         </control-area>
     </page>
 
-    <img class="photo" src="{% get_media_prefix %}{{ photo.name }}">
     <canvas class="scratchboard"></canvas>
 
     <div class="dialog-darken" onclick="setDialogVisible(false)">

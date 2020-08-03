@@ -76,6 +76,8 @@ window.applyFrame = frameImg => {
         );
         ctx.drawImage(SCRATCHBOARD_CANVAS, coords.x, coords.y);
         ctx.drawImage(frameImg, 0, 0);
+        PHOTO_ORIGINAL.hide();
+        RESULT_CANVAS.show();
     });
 
     DONE_BUTTON.prop("disabled", false);
