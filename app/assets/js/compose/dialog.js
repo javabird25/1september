@@ -3,7 +3,7 @@ import $ from 'jquery';
 const DIALOG_DARKEN = $(".dialog-darken");
 const DIALOG = $("dialog");
 
-export function setDialogVisible(visible) {
+export default function setDialogVisible(visible) {
     if (visible) {
         DIALOG_DARKEN.addClass("show");
         DIALOG.addClass("show");

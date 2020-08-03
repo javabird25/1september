@@ -1,66 +1,93 @@
 import '../../css/compose.sass';
 
 import $ from 'jquery';
-import html2canvas from 'html2canvas';
-import { setDialogVisible } from './dialog';
-
-const SELECTED_FRAME = $(".frame");
-const DONE_BUTTON = $("#done");
-const COMPOSITION = $("composition");
+import Pica from 'pica';
+import setDialogVisible from './dialog';
 
 /**
- * Возвращает ширину и высоту свободного места в рамке.
+ * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
  * Эти значения зашифрованы в конце имени файла изображения, в виде
- * "1_30x10.png", где ширина - 30, высота - 10.
+ * "Название_30x10@20,40.png", где ширина и высота области для фотографии - 30 и 10,
+ * координаты верхего левого угла области - 20, 40.
  */
-function getFrameSpace(frameImgSrc) {
-    let matches = frameImgSrc.match(/.*_(\d+)x(\d+).\w+$/);
-    return matches.slice(1).map(str => parseInt(str));
-}
-
-/** Получает соотношение реального размера изображения к размеру на экране. */
-function getImageScaleFactor(img) {
-    return img.width / img.naturalWidth;
-}
-
-const PHOTO = $(".photo");
-
-/** Подгоняет размер фотографии под место в рамке. */
-function resizePhoto(frameImg) {
-    let [width, height] = getFrameSpace(frameImg.src);
-    // TODO: Портретные фотографии
-//    PHOTO.css("width", width + "px");
-    PHOTO.css("height", Math.ceil(height * getImageScaleFactor(frameImg)) + 1 + "px");
+function getFrameSpaceParams(frameImgSrc) {
+    let matches = frameImgSrc.match(/.*_(\d+)x(\d+)@(\d+),(\d+).\w+$/).slice(1).map(match => parseInt(match));
+    return {
+        w: matches[0],
+        h: matches[1],
+        start: { x: matches[2], y: matches[3] }
+    };
 }
 
 /**
- * Задает размер элемента <composition> равным размеру рамки,
- * чтобы фотография правильно центрировалась внутри неё.
+ * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+ * images to fit into a certain area.
+ *
+ * @param {Number} srcWidth width of source image
+ * @param {Number} srcHeight height of source image
+ * @param {Number} maxWidth maximum available width
+ * @param {Number} maxHeight maximum available height
+ * @return {Object} { width, height }
  */
-function resizeComposition(appliedFrame) {
-    COMPOSITION.css("width", appliedFrame.width + "px");
-    COMPOSITION.css("height", appliedFrame.height + "px");
+function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+    let ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+    return { width: srcWidth * ratio, height: srcHeight * ratio };
 }
+
+/**
+ * Рассчитывает координаты для верхнего левого угла изображения,
+ * чтобы оно оказалось в центре пространства для рамки.
+ */
+function calculatePhotoDrawCoordinates(spaceParams, photoW, photoH) {
+    return {
+        x: spaceParams.start.x + (spaceParams.w - photoW) / 2,
+        y: spaceParams.start.y + (spaceParams.h - photoH) / 2
+    };
+}
+
+const RESULT_CANVAS = $(".result");
+const PHOTO_ORIGINAL = $("img.photo");
+const SCRATCHBOARD_CANVAS = $("canvas.scratchboard").get()[0];
+const DONE_BUTTON = $("#done");
 
 window.applyFrame = frameImg => {
-    SELECTED_FRAME.attr("src", frameImg.src);
-    let appliedFrame = SELECTED_FRAME.get()[0];
-    resizeComposition(appliedFrame);
-    resizePhoto(appliedFrame);
+    let canvas = RESULT_CANVAS.get()[0];
+    let ctx = canvas.getContext("2d");
+
+    // Установка размера холста равному размеру рамки
+    canvas.width = frameImg.naturalWidth;
+    canvas.height = frameImg.naturalHeight;
+
+    let photoImg = PHOTO_ORIGINAL.get()[0];
+    let frameSpaceParams = getFrameSpaceParams(frameImg.src);
+    let targetPhotoDimensions = calculateAspectRatioFit(
+        photoImg.naturalWidth,
+        photoImg.naturalHeight,
+        frameSpaceParams.w,
+        frameSpaceParams.h
+    );
+    SCRATCHBOARD_CANVAS.width = targetPhotoDimensions.width;
+    SCRATCHBOARD_CANVAS.height = targetPhotoDimensions.height;
+    new Pica().resize(photoImg, SCRATCHBOARD_CANVAS).then(_ => {
+        let coords = calculatePhotoDrawCoordinates(
+            frameSpaceParams,
+            targetPhotoDimensions.width,
+            targetPhotoDimensions.height
+        );
+        ctx.drawImage(SCRATCHBOARD_CANVAS, coords.x, coords.y);
+        ctx.drawImage(frameImg, 0, 0);
+    });
+
     DONE_BUTTON.prop("disabled", false);
 };
 
 const DOWNLOAD_LINK = $("#download");
 
-async function setShareImage() {
-    html2canvas(COMPOSITION.get()[0], { scale: 1 }).then(canvas => {
-        let resultImage = canvas.toDataURL();
-        DOWNLOAD_LINK.attr("href", resultImage);
-    });
+function setShareImage() {
+    DOWNLOAD_LINK.attr("href", RESULT_CANVAS.get()[0].toDataURL());
 }
 
 window.compositionDone = () => {
-    setShareImage().then(() => {
-        setDialogVisible(true);
-    });
+    setShareImage();
+    setDialogVisible(true);
 };
