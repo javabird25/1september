@@ -85,11 +85,15 @@ window.applyFrame = frameImg => {
 
 const DOWNLOAD_LINK = $("#download");
 
-function setShareImage() {
-    DOWNLOAD_LINK.attr("href", RESULT_CANVAS.get()[0].toDataURL());
+function setShareImage(cb) {
+    RESULT_CANVAS.get()[0].toBlob(blob => {
+        DOWNLOAD_LINK.attr("href", URL.createObjectURL(blob));
+        cb();
+    });
 }
 
 window.compositionDone = () => {
-    setShareImage();
-    setDialogVisible(true);
+    setShareImage(() => {
+        setDialogVisible(true);
+    });
 };
