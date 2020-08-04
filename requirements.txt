@@ -1,6 +1,6 @@
 django
-libsass
-django-compressor
-django-sass-processor
 django-webpack-loader
+django-debug-toolbar
 Pillow
+gunicorn
+psycopg2-binary
