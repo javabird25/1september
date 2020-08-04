@@ -1,21 +1,20 @@
-var path = require('path');
-var webpack = require('webpack');
-var BundleTracker = require('webpack-bundle-tracker');
+let path = require('path');
+let BundleTracker = require('webpack-bundle-tracker');
 
 module.exports = {
   context: __dirname,
   entry: {
-      quiz: "./app/assets/js/quiz.js",
-      compose: "./app/assets/js/compose",
+    quiz: "./app/assets/js/quiz.js",
+    compose: "./app/assets/js/compose",
   },
   output: {
-      path: path.resolve('./static/webpack/'),
-      filename: "[name]-[hash].js"
+    path: path.resolve('./static/webpack/'),
+    filename: "[name]-[hash].js"
   },
 
   plugins: [
     new BundleTracker({
-        filename: './static/webpack/webpack-stats.json',
+      filename: './static/webpack/webpack-stats.json',
     })
   ],
 
