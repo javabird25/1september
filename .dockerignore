@@ -1,0 +1,6 @@
+venv
+.idea
+node_modules
+static
+photos
+__pycache__

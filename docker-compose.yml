@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+    depends_on:
+      - db
+    volumes:
+      - static:/static
+      - media:/usr/src/app/photos
+  db:
+    image: postgres:alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_PASSWORD: GCPwKXdha#4%
+      POSTGRES_DB: 1september
+  server:
+    depends_on:
+      - app
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - static:/static
+      - media:/media
+
+volumes:
+  postgres_data:
+  static:
+  media:

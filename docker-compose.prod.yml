@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      args:
+        WEBPACK_MODE: production
+    environment:
+      PRODUCTION: 1

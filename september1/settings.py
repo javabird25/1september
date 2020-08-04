@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x5xgf0aza0zo4$21ovh!&oy7hnm#4i8d%wu+_u1$6_7_b(20l^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not int(os.environ.get("PRODUCTION", "0"))
 
-ALLOWED_HOSTS = []
+# TODO: Сменить, когда получим домен
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -79,8 +80,12 @@ WSGI_APPLICATION = 'september1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '1september',
+        'HOST': 'db',
+        'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'GCPwKXdha#4%',
     }
 }
 
@@ -123,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = "/static"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
