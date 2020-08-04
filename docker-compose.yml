@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     volumes:
-      - static:/static
+      - static:/usr/src/app/static
       - media:/usr/src/app/photos
   db:
     image: postgres:alpine
@@ -16,15 +16,6 @@ services:
     environment:
       POSTGRES_PASSWORD: GCPwKXdha#4%
       POSTGRES_DB: 1september
-  server:
-    depends_on:
-      - app
-    build: ./nginx
-    ports:
-      - "80:80"
-    volumes:
-      - static:/static
-      - media:/media
 
 volumes:
   postgres_data:

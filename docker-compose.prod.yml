@@ -4,6 +4,13 @@ services:
   app:
     build:
       args:
-        WEBPACK_MODE: production
-    environment:
-      PRODUCTION: 1
+        PRODUCTION: 1
+  server:
+    depends_on:
+      - app
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - static:/static
+      - media:/media

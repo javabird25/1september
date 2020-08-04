@@ -18,10 +18,13 @@ RUN chmod +x wait-for-it
 
 COPY . .
 
-ARG WEBPACK_MODE
-RUN ./node_modules/.bin/webpack --config webpack.config.js --mode=$WEBPACK_MODE
+ARG PRODUCTION
+RUN if [ $PRODUCTION -eq 1 ]; then \
+        ./node_modules/.bin/webpack --config webpack.config.js --mode=production; \
+    fi
 
 CMD ./run.sh
 EXPOSE 8000
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PRODUCTION $PRODUCTION

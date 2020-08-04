@@ -4,6 +4,8 @@ services:
   app:
     build:
       args:
-        WEBPACK_MODE: development
-    environment:
-      PRODUCTION: 0
+        PRODUCTION: 0
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
