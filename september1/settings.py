@@ -147,9 +147,9 @@ WEBPACK_LOADER = {
     }
 }
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": "september1.debug_toolbar_settings.show_toolbar_callback"
+}
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'photos')
 MEDIA_URL = "/photos/"
