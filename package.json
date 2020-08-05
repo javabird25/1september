@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.1.1",
     "jquery": "^3.5.1",
     "pica": "^6.1.0",

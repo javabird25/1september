@@ -1,5 +1,6 @@
-let path = require('path');
-let BundleTracker = require('webpack-bundle-tracker');
+const path = require('path');
+const BundleTracker = require('webpack-bundle-tracker');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -15,7 +16,8 @@ module.exports = {
   plugins: [
     new BundleTracker({
       filename: './static/webpack/webpack-stats.json',
-    })
+    }),
+    new CleanWebpackPlugin()
   ],
 
   module: {
