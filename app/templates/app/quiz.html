@@ -16,7 +16,7 @@
 
     <checker>
         Число:
-        <input type="number" maxlength="1">
+        <input type="number" maxlength="1" onkeypress="numberInputEnter(event)">
         <message class="correct">Правильно! Молодец!</message>
         <message class="wrong">Извини, не угадал! Посмотри ролики ещё раз, чтобы узнать правильный ответ!</message>
         <button onclick="checkNumber()">Проверить</button>

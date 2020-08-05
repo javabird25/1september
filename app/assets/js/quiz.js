@@ -57,3 +57,10 @@ window.checkNumber = () => {
         ANSWER_HANDLERS.wrong();
     }
 }
+
+window.numberInputEnter = event => {
+    if (event.key == "Enter") {
+        event.preventDefault();
+        window.checkNumber();
+    }
+}
