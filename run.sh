@@ -5,7 +5,8 @@ if [ $PRODUCTION -eq 1 ]; then
 fi
 
 ./wait-for-it db:5432
-./manage.py migrate
+./manage.py makemigrations --no-input
+./manage.py migrate --no-input
 
 if [ $PRODUCTION -eq 1 ]; then
     gunicorn september1.wsgi:application --bind 0.0.0.0:8000
