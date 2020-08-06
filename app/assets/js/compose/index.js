@@ -3,6 +3,7 @@ import '../../css/compose.sass';
 import $ from 'jquery';
 import Pica from 'pica';
 import setDialogVisible from './dialog';
+import { v4 as uuidV4 } from 'uuid';
 
 /**
  * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
@@ -95,5 +96,34 @@ function setShareImage(cb) {
 window.compositionDone = () => {
     setShareImage(() => {
         setDialogVisible(true);
+    });
+};
+
+window.setMode = mode => {
+    $("mode").hide();
+    $(`mode.${mode}`).css('display', 'flex');
+};
+
+window.loadPhoto = () => {
+    const fileReader = new FileReader();
+    const file = document.querySelector("#photo-input").files[0];
+
+    fileReader.addEventListener("load", () => {
+        PHOTO_ORIGINAL.attr("src", fileReader.result);
+        window.setMode("composition");
+    });
+
+    if (file)
+        fileReader.readAsDataURL(file);
+};
+
+window.submitPhoto = () => {
+    RESULT_CANVAS.get()[0].toBlob(blob => {
+        let formData = new FormData();
+        formData.append("photo", blob, `${uuidV4()}.png`);
+        fetch("/photo-upload/", { method: "POST", body: formData })
+            .then(() => {
+                window.location.href = "/photocompose/finish/";
+            });
     });
 };

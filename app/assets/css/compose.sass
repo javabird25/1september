@@ -10,11 +10,14 @@
 body
     margin: 0
 
-page
+mode
     display: flex
     width: 100vw
     height: 100vh
     overflow: hidden
+
+    &.composition
+        display: none
 
 composition-area
     +center
@@ -31,7 +34,7 @@ control-area
     justify-content: space-between
 
 @media(max-width: 768px)
-    page
+    composition-mode
         flex-direction: column
 
     composition-area, control-area
@@ -153,5 +156,5 @@ buttons
     display: flex
     margin: 1rem 0
 
-    button
+    .green-button
         margin: 0 5px
