@@ -13,8 +13,8 @@ RUN pip install -r requirements.txt
 COPY package.json yarn.lock ./
 RUN yarn install
 
-ADD https://github.com/vishnubob/wait-for-it/raw/master/wait-for-it.sh wait-for-it
-RUN chmod +x wait-for-it
+ADD https://github.com/vishnubob/wait-for-it/raw/master/wait-for-it.sh /usr/local/bin/wait-for-it
+RUN chmod +x /usr/local/bin/wait-for-it
 
 COPY . .
 
