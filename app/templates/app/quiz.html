@@ -1,13 +1,13 @@
 {% extends "app/base.html" %}
 {% load render_bundle from webpack_loader %}
 
-{% block "title" %}Викторина{% endblock %}
+{% block title %}Викторина{% endblock %}
 
-{% block "head" %}
+{% block head %}
     {% render_bundle 'quiz' 'css' %}
 {% endblock %}
 
-{% block "body" %}
+{% block body %}
     <div class='embed-container'><iframe src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allowfullscreen></iframe></div>
     <div class='embed-container'><iframe src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allowfullscreen></iframe></div>
     <div class='embed-container'><iframe src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allowfullscreen></iframe></div>

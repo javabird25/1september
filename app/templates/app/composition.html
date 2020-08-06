@@ -2,11 +2,11 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
-{% block "head" %}
+{% block head %}
     {% render_bundle 'compose' 'css' %}
 {% endblock %}
 
-{% block "body" %}
+{% block body %}
     <mode class="upload">
         <div>
             <label>
