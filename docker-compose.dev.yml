@@ -9,6 +9,9 @@ services:
       - .:/usr/src/app
     ports:
       - "8000:8000"
+    environment:
+      SUPERUSER_LOGIN: admin
+      SUPERUSER_PASSWORD: "1234"
   db:
     ports:
       - "5432:5432"
