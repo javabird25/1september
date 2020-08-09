@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+    {% if form.errors %}
+        <div>Неверный логин или пароль.</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Войти"></p>
+    </form>
+{% endblock body %}

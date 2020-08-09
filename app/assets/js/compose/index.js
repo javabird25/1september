@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Pica from 'pica';
 import setDialogVisible from './dialog';
 import { v4 as uuidV4 } from 'uuid';
+import Cookies from 'js-cookie';
 
 /**
  * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
@@ -121,9 +122,17 @@ window.submitPhoto = () => {
     RESULT_CANVAS.get()[0].toBlob(blob => {
         let formData = new FormData();
         formData.append("photo", blob, `${uuidV4()}.png`);
-        fetch("/photo-upload/", { method: "POST", body: formData })
-            .then(() => {
-                window.location.href = "/photocompose/finish/";
-            });
+        fetch(
+            "/photo-upload/",
+            {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": Cookies.get("csrftoken")
+                }
+            }
+        ).then(() => {
+            window.location.href = "/photocompose/finish/";
+        });
     });
 };

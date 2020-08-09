@@ -1,0 +1,12 @@
+{% extends 'app/gallery/base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+    {{ block.super }}
+    {% render_bundle 'gallery_visit' 'css' %}
+{% endblock head %}
+
+{% block body %}
+    {{ block.super }}
+    {% render_bundle 'gallery_visit' 'js' %}
+{% endblock body %}

@@ -1,0 +1,28 @@
+{% extends 'app/gallery/base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+    {{ block.super }}
+    {% render_bundle 'gallery_moderation' 'css' %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+    {{ block.super }}
+    {% render_bundle 'gallery_moderation' 'js' %}
+    <button class="approve-all" onclick="approveAll()">
+        <div class="material-icons">done</div>
+        <div>Одобрить все</div>
+    </button>
+{% endblock body %}
+
+{% block photo_elements %}
+    <div class="moderation-buttons">
+        <button class="approve" onclick="moderationAction('approve', this)">
+            <span class="material-icons">done</span>
+        </button>
+        <button class="delete" onclick="moderationAction('delete', this)">
+            <span class="material-icons">delete</span>
+        </button>
+    </div>
+{% endblock photo_elements %}

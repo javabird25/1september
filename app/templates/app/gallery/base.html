@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+    {% render_bundle 'gallery_base' 'css' %}
+{% endblock %}
+
+{% block body %}
+    {% if not page_obj %}
+        <div class="no-photos">
+            <div>Нет фотографий</div>
+        </div>
+    {% endif %}
+
+    <div class="photos">
+        {% for photo in page_obj %}
+            <div class="photo" data-photo-id="{{ photo.id }}">
+                <img src="{% get_media_prefix %}{{ photo.photo }}">
+                {% block photo_elements %}
+                {% endblock photo_elements %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination-center">
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" title="На первую страницу">&lt;&lt;</a>
+                <a href="?page={{ page_obj.previous_page_number }}" title="На предыдущую страницу">&lt;</a>
+            {% endif %}
+            <a href="#" onclick="goToPage()">{{ page_obj.number }}</a>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" title="На следующую страницу"></a>
+                <a id="to-last-page" href="?page={{ page_obj.paginator.num_pages }}" title="На последнюю страницу" data-num-pages="{{ page_obj.paginator.num_pages }}">&gt;&gt;</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% render_bundle 'gallery_base' 'js' %}
+{% endblock %}

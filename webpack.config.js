@@ -7,6 +7,9 @@ module.exports = {
   entry: {
     quiz: "./app/assets/js/quiz.js",
     compose: "./app/assets/js/compose",
+    gallery_base: "./app/assets/js/gallery/base.js",
+    gallery_visit: "./app/assets/js/gallery/visit.js",
+    gallery_moderation: "./app/assets/js/gallery/moderation.js",
   },
   output: {
     path: path.resolve('./static/webpack/'),
