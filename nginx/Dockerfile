@@ -1,3 +1,3 @@
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/conf.d/00_app.conf
+COPY nginx-https.conf /etc/nginx/conf.d/00_app.conf

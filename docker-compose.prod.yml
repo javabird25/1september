@@ -14,3 +14,10 @@ services:
     volumes:
       - static:/static
       - media:/media
+      - ./nginx/certbot/www:/certbot
+      - ./nginx/certbot/conf:/etc/letsencrypt
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/certbot/www:/var/www/certbot
+      - ./nginx/certbot/conf:/etc/letsencrypt
