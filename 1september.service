@@ -1,0 +1,11 @@
+[Unit]
+Description=Сайт "1 сентября"
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+WorkingDirectory=/root/1september
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
