@@ -9,7 +9,7 @@ domains=(1sept.kvantorium.su)
 rsa_key_size=4096
 data_path="./nginx/certbot"
 email="shockck84@gmail.com" # Adding a valid address is strongly recommended
-staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits
+staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 docker_compose_command="docker-compose -f docker-compose.yml -f docker-compose.prod.yml"
 nginx_service="server"
 
