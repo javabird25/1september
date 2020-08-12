@@ -25,9 +25,15 @@ SECRET_KEY = 'x5xgf0aza0zo4$21ovh!&oy7hnm#4i8d%wu+_u1$6_7_b(20l^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not int(os.environ.get("PRODUCTION", "0"))
 
-# TODO: Сменить, когда получим домен
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['1sept.kvantorium.su']
 
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_REFERRER_POLICY = 'same-origin'
 
 # Application definition
 
