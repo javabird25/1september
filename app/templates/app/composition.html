@@ -8,12 +8,14 @@
 
 {% block body %}
     <mode class="upload">
-        <div>
-            <label>
-                Твоя фотография
-                <input type="file" id="photo-input">
-            </label>
-            <button onclick="loadPhoto()">Наложить рамку</button>
+        <div class="upload-card">
+            <div class="upload-instruction">
+                Теперь ты можешь загрузить свою фотографию и поместить её в рамку твоей любимой профессии.
+                <br>
+                Для этого нажми на кнопку "Выберите файл" и выбери свою фотографию, после чего нажми "Наложить рамку".
+            </div>
+            <input type="file" id="photo-input">
+            <button onclick="loadPhoto()" class="green-button">Наложить рамку</button>
         </div>
     </mode>
 
@@ -36,12 +38,12 @@
 
     <canvas class="scratchboard"></canvas>
 
-    <div class="dialog-darken" onclick="setDialogVisible(false)">
+    <div class="dialog-darken" style="display: none">
         <dialog onclick="event.stopPropagation()">
-            <close-container><close onclick="setDialogVisible(false)">×</close></close-container>
-            Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:
+            <close-container><close>×</close></close-container>
+            <p>Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:</p>
             <a class="green-button" id="download" download="Фото с рамкой.png">Скачать</a>
-            У тебя также есть возможность опубликовать фотографию на ?доску?
+            <p>У тебя также есть возможность опубликовать фотографию на ?доску?</p>
             <buttons>
                 <button class="green-button" onclick="submitPhoto()">Да</button>
                 <a class="green-button" href="{% url 'finish' %}?published=0">Нет</a>

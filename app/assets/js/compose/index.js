@@ -2,9 +2,9 @@ import '../../css/compose.sass';
 
 import $ from 'jquery';
 import Pica from 'pica';
-import setDialogVisible from './dialog';
 import { v4 as uuidV4 } from 'uuid';
 import Cookies from 'js-cookie';
+import './dialog';
 
 /**
  * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
@@ -70,7 +70,7 @@ window.applyFrame = frameImg => {
     );
     SCRATCHBOARD_CANVAS.width = targetPhotoDimensions.width;
     SCRATCHBOARD_CANVAS.height = targetPhotoDimensions.height;
-    new Pica().resize(photoImg, SCRATCHBOARD_CANVAS).then(_ => {
+    new Pica().resize(photoImg, SCRATCHBOARD_CANVAS).then(() => {
         let coords = calculatePhotoDrawCoordinates(
             frameSpaceParams,
             targetPhotoDimensions.width,
@@ -80,23 +80,24 @@ window.applyFrame = frameImg => {
         ctx.drawImage(frameImg, 0, 0);
         PHOTO_ORIGINAL.hide();
         RESULT_CANVAS.show();
+        DONE_BUTTON.prop("disabled", false);
     });
-
-    DONE_BUTTON.prop("disabled", false);
 };
 
 const DOWNLOAD_LINK = $("#download");
 
-function setShareImage(cb) {
-    RESULT_CANVAS.get()[0].toBlob(blob => {
-        DOWNLOAD_LINK.attr("href", URL.createObjectURL(blob));
-        cb();
+function setShareImage() {
+    return new Promise(resolve => {
+        RESULT_CANVAS.get()[0].toBlob(blob => {
+            DOWNLOAD_LINK.attr("href", URL.createObjectURL(blob));
+            resolve();
+        });
     });
 }
 
 window.compositionDone = () => {
-    setShareImage(() => {
-        setDialogVisible(true);
+    setShareImage().then(() => {
+        $(".dialog-darken").show();
     });
 };
 

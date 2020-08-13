@@ -19,7 +19,7 @@
         <input type="number" maxlength="1" onkeypress="numberInputEnter(event)">
         <message class="correct">Правильно! Молодец!</message>
         <message class="wrong">Извини, не угадал! Посмотри ролики ещё раз, чтобы узнать правильный ответ!</message>
-        <button onclick="checkNumber()">Проверить</button>
+        <button onclick="checkNumber()" class="green-button">Проверить</button>
     </checker>
 
     {% render_bundle 'quiz' 'js' %}

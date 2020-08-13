@@ -16,41 +16,54 @@ mode
     height: 100vh
     overflow: hidden
 
+    &.upload
+        +center
+
+        .upload-card
+            display: flex
+            flex-direction: column
+            align-items: center
+
+        .upload-instruction
+            font-size: 14pt
+
+        input
+            display: block
+            margin: 0
+
+            &[type=file]
+                margin: 1em 0
+
     &.composition
         display: none
 
+@media(max-width: 690px)
+    mode.composition
+        flex-direction: column
+        overflow: auto
+
+    composition-area, control-area
+        width: 100% !important
+
 composition-area
     +center
+    +card.card
+
+    display: flex
     width: 65vw
 
     canvas
         display: none
+
+    .photo, canvas
         max-width: 100%
+        max-height: 100%
 
 control-area
     width: 35vw
     display: flex
     flex-direction: column
     justify-content: space-between
-
-@media(max-width: 768px)
-    composition-mode
-        flex-direction: column
-
-    composition-area, control-area
-        width: 100vw
-
-    composition-area
-        height: 65vh
-
-    control-area
-        height: 35vh
-
-    .frames
-        margin: 0.2rem !important
-
-        img
-            width: 90px !important
 
 composition-wrapper
     +center
@@ -93,6 +106,8 @@ canvas.scratchboard
         min-width: 120px
 
 .frames
+    +card.card
+
     display: flex
     margin: 1rem
     flex:
@@ -100,17 +115,16 @@ canvas.scratchboard
         grow: 1
     align-content: flex-start
     justify-content: space-evenly
+    overflow-x: auto
 
     img
         width: 200px
         object-fit: contain
         margin: 3px
+        margin-right: auto
 
 dialog, .dialog-darken
-    display: none
-
-    &.show
-        display: flex
+    display: flex
 
 .dialog-darken
     position: fixed
@@ -118,14 +132,9 @@ dialog, .dialog-darken
     left: 0
     width: 100vw
     height: 100vh
-    background-color: transparent
+    background-color: #0000005e
     justify-content: center
     align-items: center
-
-    transition: color 0.3s ease
-
-    &.show
-        background-color: #0000005e
 
 .st-btn
     display: block !important
@@ -147,14 +156,14 @@ dialog
             line-height: 50%
             cursor: pointer
 
-.green-button
-    margin:
-        top: 1rem
-        bottom: 1.5rem
+    buttons
+        display: flex
+        margin: 1rem 0
 
-buttons
-    display: flex
-    margin: 1rem 0
+        .green-button
+            margin: 0 5px
 
-    .green-button
-        margin: 0 5px
+            &:first-child
+                margin-left: 0
+            &:last-child
+                margin-right: 0
