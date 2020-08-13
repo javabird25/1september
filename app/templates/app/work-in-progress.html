@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block head %}
+    <style>
+        html {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            width: fit-content;
+            opacity: 0.5;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        div {
+            text-align: center;
+            font-size: x-large;
+        }
+    </style>
+{% endblock head %}
+
+{% block body %}
+    <img src="{% static 'hardhat.jpeg' %}">
+    <div>В разработке</div>
+{% endblock body %}
