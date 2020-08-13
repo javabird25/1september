@@ -26,6 +26,8 @@ SECRET_KEY = 'x5xgf0aza0zo4$21ovh!&oy7hnm#4i8d%wu+_u1$6_7_b(20l^'
 DEBUG = not int(os.environ.get("PRODUCTION", "0"))
 
 ALLOWED_HOSTS = ['1sept.kvantorium.su']
+if DEBUG:
+    ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
