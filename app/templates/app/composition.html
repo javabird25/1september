@@ -4,52 +4,13 @@
 
 {% block head %}
     {% render_bundle 'compose' 'css' %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
-    <mode class="upload">
-        <div class="upload-card">
-            <div class="upload-instruction">
-                Теперь ты можешь загрузить свою фотографию и поместить её в рамку твоей любимой профессии.
-                <br>
-                Для этого нажми на кнопку "Выберите файл" и выбери свою фотографию, после чего нажми "Наложить рамку".
-            </div>
-            <input type="file" id="photo-input">
-            <button onclick="loadPhoto()" class="green-button">Наложить рамку</button>
-        </div>
-    </mode>
+    <div class="app-root"></div>
 
-    <mode class="composition">
-        <composition-area>
-            <img class="photo">
-            <canvas class="result"></canvas>
-        </composition-area>
-        <control-area>
-            <div class="frames">
-                {% for frame in frames %}
-                    <img src="{% get_static_prefix %}frames/{{ frame }}" onclick="applyFrame(this)">
-                {% endfor %}
-            </div>
-            <div class="send-wrapper">
-                <button class="green-button" id="done" onclick="compositionDone()" disabled>Готово</button>
-            </div>
-        </control-area>
-    </mode>
-
-    <canvas class="scratchboard"></canvas>
-
-    <div class="dialog-darken" style="display: none">
-        <dialog onclick="event.stopPropagation()">
-            <close-container><close>×</close></close-container>
-            <p>Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:</p>
-            <a class="green-button" id="download" download="Фото с рамкой.png">Скачать</a>
-            <p>У тебя также есть возможность опубликовать фотографию на ?доску?</p>
-            <buttons>
-                <button class="green-button" onclick="submitPhoto()">Да</button>
-                <a class="green-button" href="{% url 'finish' %}?published=0">Нет</a>
-            </buttons>
-        </dialog>
-    </div>
+    <data data-frames-srcs="{{ frames_urls }}"></data>
 
     {% render_bundle 'compose' 'js' %}
 {% endblock %}

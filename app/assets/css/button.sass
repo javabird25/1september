@@ -2,17 +2,11 @@
 @use "sass:color"
 @use "colors"
 
-=full-width
-    display: block
-    width: 100%
-    margin: 2px 0
-
 =transition
     transition: border 0.3s ease
 
 .green-button
     +card.card
-    +full-width
     +transition
 
     color: white
@@ -30,3 +24,8 @@
         background-color: colors.$button-disabled
         border-color: color.scale(colors.$button-disabled, $saturation: -50%, $lightness: 50%)
         cursor: not-allowed
+
+    &.full-width
+        display: block
+        width: 100%
+        margin: 2px 0
