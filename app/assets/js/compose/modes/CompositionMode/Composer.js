@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import PhotoScaleButtons from './PhotoScaleButtons';
+import UsageHint from './UsageHint';
 
 /**
  * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
@@ -117,6 +118,7 @@ export default function Composer(props) {
                 zoomIn={() => setPhotoScale(photoScale + 0.5)}
                 zoomOut={() => setPhotoScale(photoScale - 0.5)}
             />
+            <UsageHint />
         </div>
     );
 }
