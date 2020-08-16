@@ -1,3 +1,5 @@
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,9 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
 
+    {% render_bundle 'common' 'css' %}
+
     {% block head %}{% endblock %}
 </head>
 <body>
     {% block body %}{% endblock %}
+
+    {% render_bundle 'common' 'js'%}
 </body>
 </html>

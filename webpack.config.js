@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   context: __dirname,
   entry: {
+    common: "./app/assets/js/common.js",
     quiz: "./app/assets/js/quiz.js",
     compose: "./app/assets/js/compose",
     gallery_base: "./app/assets/js/gallery/base.js",
