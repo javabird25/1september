@@ -5,3 +5,4 @@ node_modules
 /photos/*
 __pycache__
 /nginx/certbot
+/webpack-out

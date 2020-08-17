@@ -13,13 +13,13 @@ module.exports = {
     gallery_moderation: "./app/assets/js/gallery/moderation.js",
   },
   output: {
-    path: path.resolve('./static/webpack/'),
+    path: path.resolve('./webpack-out'),
     filename: "[name]-[hash].js"
   },
 
   plugins: [
     new BundleTracker({
-      filename: './static/webpack/webpack-stats.json',
+      filename: './webpack-out/webpack-stats.json',
     }),
     new CleanWebpackPlugin()
   ],
