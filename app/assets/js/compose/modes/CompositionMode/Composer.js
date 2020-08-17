@@ -111,11 +111,34 @@ export default function Composer(props) {
         });
     }
 
+    const [lastTouchCoords, setLastTouchCoords] = useState(null);
+
+    function dragPhotoTouchStart(event) {
+        const firstTouch = event.touches[0];
+        setLastTouchCoords({ x: firstTouch.clientX, y: firstTouch.clientY });
+    }
+
+    function dragPhotoTouch(event) {
+        const firstTouch = event.touches[0];
+        const canvasScale = getCanvasScale(props.canvasRef.current);
+        setPhotoCoords(prevCoords => ({
+            x: prevCoords.x + (firstTouch.clientX - lastTouchCoords.x) / canvasScale,
+            y: prevCoords.y + (firstTouch.clientY - lastTouchCoords.y) / canvasScale
+        }));
+        setLastTouchCoords({ x: firstTouch.clientX, y: firstTouch.clientY });
+    }
+
     return (
         <div className="composer">
             {
                 props.frame ?
-                    <canvas className="composition" ref={props.canvasRef} onMouseMove={dragPhoto} /> :
+                    <canvas
+                        className="composition"
+                        ref={props.canvasRef}
+                        onMouseMove={dragPhoto}
+                        onTouchStart={dragPhotoTouchStart}
+                        onTouchMove={dragPhotoTouch}
+                    /> :
                     <img src={props.photo} />
             }
             {
