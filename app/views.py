@@ -26,7 +26,7 @@ class CompositionView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         frames_urls = [settings.STATIC_URL + "frames/" + frame_filename for frame_filename in os.listdir(os.path.join(settings.BASE_DIR, "app", "static", "frames"))]
-        context["frames_urls"] = "|".join(frames_urls)
+        context["frames_urls"] = frames_urls
         return context
 
 class PhotoUploadViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):

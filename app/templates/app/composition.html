@@ -5,12 +5,15 @@
 {% block head %}
     {% render_bundle 'compose' 'css' %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% for frame_url in frames_urls %}
+        <link rel="preload" as="image" href="{{ frame_url }}">
+    {% endfor %}
 {% endblock %}
 
 {% block body %}
     <div class="app-root"></div>
 
-    <data data-frames-srcs="{{ frames_urls }}"></data>
+    <data data-frames-srcs="{{ frames_urls|join:'|' }}"></data>
 
     {% render_bundle 'compose' 'js' %}
 {% endblock %}
