@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PhotoScaleButtons from './PhotoScaleButtons';
 import UsageHint from './UsageHint';
@@ -113,12 +113,20 @@ export default function Composer(props) {
 
     return (
         <div className="composer">
-            <canvas className="composition" ref={props.canvasRef} onMouseMove={dragPhoto} />
-            <PhotoScaleButtons
-                zoomIn={() => setPhotoScale(photoScale + 0.5)}
-                zoomOut={() => setPhotoScale(photoScale - 0.5)}
-            />
-            <UsageHint />
+            {
+                props.frame ?
+                    <canvas className="composition" ref={props.canvasRef} onMouseMove={dragPhoto} /> :
+                    <img src={props.photo} />
+            }
+            {
+                props.frame && <>
+                    <PhotoScaleButtons
+                        zoomIn={() => setPhotoScale(photoScale + 0.5)}
+                        zoomOut={() => setPhotoScale(photoScale - 0.5)}
+                    />
+                    <UsageHint />
+                </>
+            }
         </div>
     );
 }
