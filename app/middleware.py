@@ -6,8 +6,8 @@ def work_in_progress(get_response):
     def middleware(request):
         response = get_response(request)
 
-        # if not settings.DEBUG:
-        response.content = Engine.get_default().get_template("app/work-in-progress.html").render(Context()).encode()
+        if not settings.DEBUG and not 'open-sesame' in request.COOKIES:
+            response.content = Engine.get_default().get_template("app/work-in-progress.html").render(Context()).encode()
 
         return response
 
