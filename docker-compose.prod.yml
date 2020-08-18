@@ -5,6 +5,9 @@ services:
     build:
       args:
         PRODUCTION: 1
+    environment:
+      SUPERUSER_LOGIN: moderation
+      SUPERUSER_PASSWORD: L/a.=5K4,Kck/YHH
   server:
     depends_on:
       - app
