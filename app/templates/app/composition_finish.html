@@ -1,14 +1,23 @@
 {% extends "app/base.html" %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}Спасибо!{% endblock %}
 
+{% block head %}
+    {% render_bundle 'compose_finish' 'css' %}
+{% endblock head %}
+
 {% block body %}
-    <p>Спасибо!</p>
-    <p>
-        {% if published %}
-            Через некоторое время твоя фотография появится в <a href="/gallery/">Галерее первоклассников</a>.
-        {% else %}
-            Можешь заглянуть в <a href="/gallery/">Галерею первоклассников</a>, чтобы увидеть других ребят.
-        {% endif %}
-    </p>
+    <div>
+        <p>Спасибо!</p>
+        <p>
+            {% if published %}
+                Через некоторое время твоя фотография появится в <a href="/gallery/">Галерее первоклассников</a>.
+            {% else %}
+                Можешь заглянуть в <a href="/gallery/">Галерею первоклассников</a>, чтобы увидеть других ребят.
+            {% endif %}
+        </p>
+    </div>
+
+    {% render_bundle 'compose_finish' 'js' %}
 {% endblock %}
