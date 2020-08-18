@@ -36,6 +36,12 @@ class PhotoUploadViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
 class CompositionFinishView(TemplateView):
     template_name = "app/composition_finish.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["published"] = bool(int(self.request.GET.get("published", "0")))
+        return context
+
+
 class GalleryView(ListView):
     template_name = "app/gallery/visit.html"
     queryset = Photo.objects.filter(verified=True).order_by("-submission_date")
