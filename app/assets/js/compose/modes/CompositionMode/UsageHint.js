@@ -4,14 +4,15 @@ export default function UsageHint(props) {
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        setTimeout(() => {
+        const hideTimeout = setTimeout(() => {
             setVisible(false);
         }, 10000);
+        return () => { clearTimeout(hideTimeout); };
     }, []);
 
     return visible ? (
         <div className="usage-hint">
-            Ты можешь перетаскивать фотографию, 
+            Ты можешь перетаскивать фотографию,
             а также изменять ее размер с помощью кнопок внизу.
         </div>
     ) : null;
