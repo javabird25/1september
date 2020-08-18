@@ -18,7 +18,7 @@ export default function UploadMode(props) {
                 }
             }
         ).then(() => {
-            window.location.href = "/photocompose/finish/";
+            window.location.href = "/photocompose/finish/?published=1";
         });
     }
 
