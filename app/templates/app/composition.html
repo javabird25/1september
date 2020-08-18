@@ -2,6 +2,8 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
+{% block title %}Наложи рамку{% endblock %}
+
 {% block head %}
     {% render_bundle 'compose' 'css' %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

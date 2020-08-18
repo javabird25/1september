@@ -1,6 +1,8 @@
 {% extends 'app/gallery/base.html' %}
 {% load render_bundle from webpack_loader %}
 
+{% block title %}Модерация галереи{% endblock %}
+
 {% block head %}
     {{ block.super }}
     {% render_bundle 'gallery_moderation' 'css' %}
