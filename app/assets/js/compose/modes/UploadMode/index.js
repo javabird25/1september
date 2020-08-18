@@ -7,7 +7,7 @@ import Mode from '../Mode';
 export default function UploadMode(props) {
     function submitPhoto() {
         let formData = new FormData();
-        formData.append("photo", props.prevModeResult.composedPhotoBlob, `${uuidV4()}.png`);
+        formData.append("photo", props.prevModeResult.composedPhotoBlob, `${uuidV4()}.jpg`);
         fetch(
             "/photo-upload/",
             {
@@ -31,7 +31,7 @@ export default function UploadMode(props) {
                 <p>Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:</p>
                 <a
                     className="green-button full-width"
-                    download="Фото с рамкой.png"
+                    download="Фото с рамкой.jpg"
                     href={URL.createObjectURL(props.prevModeResult.composedPhotoBlob)}
                 >Скачать</a>
                 <p>У тебя также есть возможность опубликовать фотографию на ?доску?</p>

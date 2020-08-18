@@ -62,6 +62,8 @@ export default function Composer(props) {
         canvas.width = frameObj.naturalWidth;
         canvas.height = frameObj.naturalHeight;
 
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(
             photoObj,
             photoCoords.x,

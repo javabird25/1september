@@ -15,7 +15,7 @@ export default function CompositionMode(props) {
         const canvas = canvasRef.current;
         canvas.toBlob(blob => {
             props.changeMode(UploadMode, { composedPhotoBlob: blob });
-        });
+        }, "image/jpeg", 0.9);
     }
 
     return <Mode className="composition">
