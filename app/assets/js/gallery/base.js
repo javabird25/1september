@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 window.goToPage = () => {
     let desiredPage;
-    let lastPage = parseInt($("#to-last-page").attr("data-last-page"));
+    let lastPage = parseInt($("#current-page").attr("data-num-pages"));
     if (isNaN(lastPage))
         return;
 

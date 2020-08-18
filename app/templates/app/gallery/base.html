@@ -4,6 +4,7 @@
 
 {% block head %}
     {% render_bundle 'gallery_base' 'css' %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -26,13 +27,21 @@
     <div class="pagination-center">
         <div class="pagination">
             {% if page_obj.has_previous %}
-                <a href="?page=1" title="На первую страницу">&lt;&lt;</a>
-                <a href="?page={{ page_obj.previous_page_number }}" title="На предыдущую страницу">&lt;</a>
+                <button onclick="window.location.href = '?page=1'" title="На первую страницу">
+                    <span class="material-icons">first_page</span>
+                </button>
+                <button onclick="window.location.href = '?page={{ page_obj.previous_page_number }}'" title="На предыдущую страницу">
+                    <span class="material-icons">chevron_left</span>
+                </button>
             {% endif %}
-            <a href="#" onclick="goToPage()">{{ page_obj.number }}</a>
+            <button id="current-page" onclick="goToPage()" data-num-pages="{{ page_obj.paginator.num_pages }}">{{ page_obj.number }}</button>
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" title="На следующую страницу"></a>
-                <a id="to-last-page" href="?page={{ page_obj.paginator.num_pages }}" title="На последнюю страницу" data-num-pages="{{ page_obj.paginator.num_pages }}">&gt;&gt;</a>
+                <button onclick="window.location.href = '?page={{ page_obj.next_page_number }}'" title="На следующую страницу">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+                <button onclick="window.location.href = '?page={{ page_obj.paginator.num_pages }}'" title="На последнюю страницу">
+                    <span class="material-icons">last_page</span>
+                </button>
             {% endif %}
         </div>
     </div>

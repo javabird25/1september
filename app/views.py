@@ -39,7 +39,7 @@ class CompositionFinishView(TemplateView):
 class GalleryView(ListView):
     template_name = "app/gallery/visit.html"
     queryset = Photo.objects.filter(verified=True).order_by("-submission_date")
-    paginate_by = 10
+    paginate_by = 36
 
 
 class GalleryModerationView(LoginRequiredMixin, ListView):

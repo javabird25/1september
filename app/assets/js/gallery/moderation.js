@@ -34,7 +34,7 @@ window.moderationAction = (action, button) => {
 };
 
 window.approveAll = () => {
-    let photos = $(".photo");
+    let photos = $(".photo:not([opacity=0])");
     let ids = photos.map(function() { return $(this).attr("data-photo-id"); }).get();
     $.post({
         url: "/gallery/moderation/batch-action/",
