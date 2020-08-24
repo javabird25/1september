@@ -35,11 +35,18 @@ export default function PhotoPickMode(props) {
         <Mode className="photo-pick">
             <div>
                 <div className="instruction">
-                    <p>Теперь ты можешь загрузить свою фотографию и поместить её в рамку твоей любимой профессии.</p>
-                    <p>Для этого нажми на кнопку "Выберите файл" и выбери свою фотографию, после чего нажми "Наложить рамку".</p>
+                    <p>
+                        Поздравляем, ты справился с заданием! Ты очень умный ребенок.
+                        Нам очень хочется узнать, кем бы ты хотел стать в будущем. 
+                        Выбери интересующее тебя направление и сделай классное фото на память.
+                    </p>
+                    <p>
+                        Нажми на кнопку "Выбери файл" и загрузи фотографию. 
+                        После чего кликни на кнопку "Продолжить".
+                    </p>
                 </div>
                 <input type="file" ref={fileInputRef} />
-                <button onClick={loadPhoto} className="green-button full-width">Наложить рамку</button>
+                <button onClick={loadPhoto} className="green-button full-width">Продолжить</button>
             </div>
         </Mode>
     );
