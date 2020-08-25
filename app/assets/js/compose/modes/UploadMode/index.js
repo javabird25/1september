@@ -37,16 +37,23 @@ export default function UploadMode(props) {
     return (
         <Mode className="upload">
             <div>
-                <p>Спасибо! Ты можешь скачать фотографию с рамкой и поделиться ей, нажав на кнопку:</p>
+                <p>
+                    Спасибо! Вы можете скачать фотографию с рамкой и поделиться ей, 
+                    нажав на кнопку:
+                </p>
                 <a
                     className="green-button full-width"
                     download="Фото с рамкой.jpg"
                     href={URL.createObjectURL(props.prevModeResult.composedPhotoBlob)}
                 >Скачать</a>
-                <p>У тебя также есть возможность опубликовать фотографию на ?доску?</p>
+                <p>
+                    У вас также есть возможность опубликовать фотографию на доску "Моя будущая профессия".
+                    (Нажимая кнопку "Опубликовать", вы соглашаетесть на размещение фоторамки с вашей фотографией
+                    на публичном ресурсе в общем доступе по адресу <code>https://1sept.kvantorium.su</code>)
+                </p>
                 <div className="upload-buttons">
-                    <button className="green-button" onClick={submitPhoto}>Да</button>
-                    <a className="green-button" href="/photocompose/finish/?published=0">Нет</a>
+                    <button className="green-button" onClick={submitPhoto}>Опубликовать</button>
+                    <a className="green-button" href="/photocompose/finish/">Нет, спасибо</a>
                 </div>
             </div>
         </Mode>

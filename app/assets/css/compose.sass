@@ -81,14 +81,27 @@ body
                 +card.card
                 position: absolute
                 top: 8px
-                right: 8px
+                left: 50%
+                transform: translateX(-50%)
                 font-size: 14pt
+                color: firebrick
 
         .frame-picker
             +card.card
             overflow-y: auto
-            display: flex
-            flex-wrap: wrap
+
+            h1
+                font-family: Roboto
+                font-size: large
+                color: firebrick
+
+            .frames
+                display: flex
+                flex-wrap: wrap
+
+                .frame
+                    width: 200px
+                    object-fit: contain
 
             @media(max-width: 768px)
                 flex-wrap: nowrap
@@ -97,10 +110,6 @@ body
                 grid:
                     row: 2
                     column: 1
-
-            .frame
-                width: 200px
-                object-fit: contain
 
         button.done
             place-self: center

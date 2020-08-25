@@ -7,6 +7,7 @@
 {% block head %}
     {% render_bundle 'compose' 'css' %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     {% for frame_url in frames_urls %}
         <link rel="preload" as="image" href="{{ frame_url }}">
     {% endfor %}

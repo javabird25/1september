@@ -1,7 +1,7 @@
 {% extends 'app/gallery/base.html' %}
 {% load render_bundle from webpack_loader %}
 
-{% block title %}Галерея первоклассников{% endblock %}
+{% block title %}Моя будущая профессия{% endblock %}
 
 {% block head %}
     {{ block.super }}
@@ -10,5 +10,7 @@
 
 {% block body %}
     {{ block.super }}
+    <h1>Моя будущая профессия</h1>
+    <h2>выбранные первоклассниками г. Магнитогорска 2020-2021 учебного года направления будущей деятельности</h2>
     {% render_bundle 'gallery_visit' 'js' %}
 {% endblock body %}
