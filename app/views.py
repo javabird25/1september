@@ -20,6 +20,7 @@ from . import serializers
 class QuizView(TemplateView):
     template_name = "app/quiz.html"
 
+
 class CompositionView(TemplateView):
     template_name = "app/composition.html"
 
@@ -29,16 +30,21 @@ class CompositionView(TemplateView):
         context["frames_urls"] = frames_urls
         return context
 
-class PhotoUploadViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
-    serializer_class = serializers.PhotoSerializer
-    parser_classes = [parsers.MultiPartParser]
+
+@api_view(["POST"])
+def upload_photo(request):
+    serializer = serializers.PhotoSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    photo = serializer.save()
+    return Response({ "id": photo.id })
+
 
 class CompositionFinishView(TemplateView):
     template_name = "app/composition_finish.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["published"] = bool(int(self.request.GET.get("published", "0")))
+        context["photo_id"] = self.request.GET.get("photo-id")
         return context
 
 
@@ -46,6 +52,11 @@ class GalleryView(ListView):
     template_name = "app/gallery/visit.html"
     queryset = Photo.objects.filter(verified=True).order_by("-submission_date")
     paginate_by = 36
+
+    def get_context_data(self, **context):
+        context = super().get_context_data(**context)
+        context["professions_percentages"] = Photo.get_percentages()
+        return context
 
 
 class GalleryModerationView(LoginRequiredMixin, ListView):

@@ -7,6 +7,10 @@ import Composer from './Composer';
 import FramePicker from './FramePicker';
 import DoneButton from './DoneButton';
 
+function getProfessionName(frameSrc) {
+    return frameSrc.match(new RegExp("/([а-яА-Я ]+)_"))[1];
+}
+
 export default function CompositionMode(props) {
     const [pickedFrame, setPickedFrame] = useState(null);
     const canvasRef = useRef();
@@ -14,7 +18,13 @@ export default function CompositionMode(props) {
     function finishComposition() {
         const canvas = canvasRef.current;
         canvas.toBlob(blob => {
-            props.changeMode(UploadMode, { composedPhotoBlob: blob });
+            props.changeMode(
+                UploadMode,
+                { 
+                    composedPhotoBlob: blob, 
+                    profession: getProfessionName(pickedFrame)
+                }
+            );
         }, "image/jpeg", 0.9);
     }
 

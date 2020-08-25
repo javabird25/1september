@@ -6,4 +6,4 @@ from . import models
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Photo
-        fields = ['photo']
+        fields = ['photo', 'profession']

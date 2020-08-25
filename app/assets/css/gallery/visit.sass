@@ -1,3 +1,5 @@
+@use "../card"
+
 .photo
     $size: 400px
     width: $size
@@ -12,3 +14,16 @@ h1
 
 h2
     font-size: 12pt
+
+.gallery
+    display: grid
+    grid-template-columns: 20% 80%
+
+.stats
+    +card.card
+
+    h1
+        font-size: 14pt
+    
+    table, th, td
+        border: none

@@ -14,6 +14,7 @@ export default function UploadMode(props) {
             success(result) {
                 let formData = new FormData();
                 formData.append("photo", result, `${uuidV4()}.jpg`);
+                formData.append("profession", props.prevModeResult.profession);
 
                 fetch(
                     "/photo-upload/",
@@ -24,8 +25,10 @@ export default function UploadMode(props) {
                             "X-CSRFToken": Cookies.get("csrftoken")
                         }
                     }
-                ).then(() => {
-                    window.location.href = "/photocompose/finish/?published=1";
+                )
+                .then(response => response.json())
+                .then(json => {
+                    window.location.href = `/photocompose/finish/?photo-id=${json.id}`;
                 });
             }
         });

@@ -9,8 +9,25 @@
 {% endblock head %}
 
 {% block body %}
-    {{ block.super }}
     <h1>Моя будущая профессия</h1>
     <h2>выбранные первоклассниками г. Магнитогорска 2020-2021 учебного года направления будущей деятельности</h2>
+    <div class="gallery">
+        <div class="stats">
+        <h1>Статистика</h1>
+        <table>
+            <tr>
+                <th>Направление</th>
+                <th>Процент</th>
+            </tr>
+            {% for prof in professions_percentages %}
+                <tr>
+                    <td>{{ prof.profession }}</td>
+                    <td>{{ prof.percentage }}%</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        {{ block.super }}
+    </div>
     {% render_bundle 'gallery_visit' 'js' %}
 {% endblock body %}
