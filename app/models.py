@@ -9,8 +9,9 @@ class Photo(models.Model):
 
     @staticmethod
     def get_percentages():
-        profession_counts = Photo.objects.values("profession").annotate(count=models.Count("profession"))
-        num_photos = len(Photo.objects.all())
+        verified_photos = Photo.objects.filter(verified=True)
+        profession_counts = verified_photos.values("profession").annotate(count=models.Count("profession"))
+        num_photos = len(verified_photos.all())
         return [
             { 
                 "profession": d["profession"], 
