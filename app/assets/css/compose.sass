@@ -5,6 +5,9 @@
 body
     margin: 0
 
+button
+    cursor: pointer
+
 .mode
     width: 100vw
     height: 100vh
@@ -60,6 +63,9 @@ body
                 width: 100%
                 height: 100%
                 object-fit: contain
+
+            canvas
+                cursor: all-scroll
 
             .scale-buttons
                 +card.card
@@ -117,6 +123,7 @@ body
                     @media(max-width: 768px)
                         width: unset
                     object-fit: contain
+                    cursor: pointer
 
             @media(max-width: 768px)
                 flex-wrap: nowrap
