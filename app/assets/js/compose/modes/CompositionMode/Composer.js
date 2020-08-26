@@ -146,8 +146,8 @@ export default function Composer(props) {
             {
                 props.frame && <>
                     <PhotoScaleButtons
-                        zoomIn={() => setPhotoScale(photoScale + 0.5)}
-                        zoomOut={() => setPhotoScale(photoScale - 0.5)}
+                        zoomIn={() => setPhotoScale(photoScale + 0.2)}
+                        zoomOut={() => setPhotoScale(photoScale - 0.2)}
                     />
                     <UsageHint />
                 </>
