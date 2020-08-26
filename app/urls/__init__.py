@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from .. import views
@@ -14,4 +15,5 @@ urlpatterns = [
     path("gallery/moderation/batch-action/", views.moderation_action_batch),
     path("login/", LoginView.as_view(redirect_authenticated_user=True), name="login"),
     path("logout/", LogoutView.as_view()),
+    path("hobby-groups/", TemplateView.as_view(template_name="app/hobby_groups.html")),
 ]

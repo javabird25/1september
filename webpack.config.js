@@ -12,6 +12,7 @@ module.exports = {
     gallery_base: "./app/assets/js/gallery/base.js",
     gallery_visit: "./app/assets/js/gallery/visit.js",
     gallery_moderation: "./app/assets/js/gallery/moderation.js",
+    hobby_groups: "./app/assets/css/hobby-groups.sass",
   },
   output: {
     path: path.resolve('./webpack-out'),
