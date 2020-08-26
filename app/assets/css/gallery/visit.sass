@@ -16,13 +16,26 @@ h2
     font-size: 12pt
 
 .gallery
-    display: grid
-    grid-template-columns: 1fr 6fr
+    display: flex
     position: relative
 
-    @media(max-width: 574px)
-        display: flex
+@media(max-width: 1000px)
+    .gallery
         flex-direction: column-reverse
+
+    .stats-wrapper, .photos
+        width: 100% !important
+
+    .stats
+        margin-bottom: 5rem
+        position: unset
+
+.stats-wrapper
+    width: 20%
+
+.photos
+    width: 80%
+    display: flex
 
 .stats
     +card.card
@@ -31,11 +44,6 @@ h2
     font-size: 85%
     position: sticky
     top: 8px
-
-    @media(max-width: 574px)
-        margin-bottom: 5rem
-        position: unset
-        align-self: unset
 
     h1
         font-size: 85%
