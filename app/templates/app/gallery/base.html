@@ -16,10 +16,11 @@
 
     <div class="photos">
         {% for photo in page_obj %}
-            <div class="photo" data-photo-id="{{ photo.id }}">
+            <div class="photo" data-photo-id="{{ photo.id }}" onclick="photoDetail(this)">
                 <img src="{% get_media_prefix %}{{ photo.photo }}">
                 {% block photo_elements %}
                 {% endblock photo_elements %}
+                <div class="id-badge">{{ photo.id }}</div>
             </div>
         {% endfor %}
     </div>

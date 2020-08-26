@@ -1,5 +1,6 @@
 @use "../card"
 @use "../fab"
+@use "../colors"
 
 .photos
     width: 100%
@@ -11,6 +12,16 @@
 
 .photo
     position: relative
+
+    .id-badge
+        width: fit-content
+        background-color: colors.$accent-color
+        color: white
+        position: absolute
+        top: 4px
+        left: 4px
+        padding: 0.3em
+        border-radius: 1em
 
 img
     width: 100%
