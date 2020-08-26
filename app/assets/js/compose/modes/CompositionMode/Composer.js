@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PhotoScaleButtons from './PhotoScaleButtons';
 import UsageHint from './UsageHint';
+import getImageSize from '../utils';
 
 /**
  * Возвращает ширину, высоту и координаты верхнего левого угла свободного места в рамке.
@@ -48,9 +49,12 @@ export default function Composer(props) {
     const [photoCoords, setPhotoCoords] = useState({ x: 0, y: 0 });
     const [photoScale, setPhotoScale] = useState(1.0);
 
+    // Рисование на canvas
     useEffect(() => {
         if (!props.frame)
             return;
+
+        props.onRenderStarted();
 
         const canvas = props.canvasRef.current;
         const ctx = canvas.getContext("2d");
@@ -59,21 +63,25 @@ export default function Composer(props) {
         const frameObj = new Image();
         frameObj.src = props.frame;
 
-        canvas.width = frameObj.naturalWidth;
-        canvas.height = frameObj.naturalHeight;
+        getImageSize(props.frame).then(size => {
+            canvas.width = size.width;
+            canvas.height = size.height;
 
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(
-            photoObj,
-            photoCoords.x,
-            photoCoords.y,
-            props.photoSize.width * photoScale,
-            props.photoSize.height * photoScale,
-        );
-        ctx.drawImage(frameObj, 0, 0);
-    });
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(
+                photoObj,
+                photoCoords.x,
+                photoCoords.y,
+                props.photoSize.width * photoScale,
+                props.photoSize.height * photoScale,
+            );
+            ctx.drawImage(frameObj, 0, 0);
+            props.onRenderComplete();
+        });
+    }, [props.frame, photoCoords]);
 
+    // Установка фотографии в центр пространства в рамке
     useEffect(() => {
         if (!props.frame)
             return;

@@ -13,6 +13,7 @@ function getProfessionName(frameSrc) {
 
 export default function CompositionMode(props) {
     const [pickedFrame, setPickedFrame] = useState(null);
+    const [renderComplete, setRenderComplete] = useState(false);
     const canvasRef = useRef();
 
     function finishComposition() {
@@ -34,8 +35,10 @@ export default function CompositionMode(props) {
             photo={props.prevModeResult.photo}
             photoSize={props.prevModeResult.photoSize}
             canvasRef={canvasRef}
+            onRenderStarted={() => setRenderComplete(false)}
+            onRenderComplete={() => setRenderComplete(true)}
         />
         <FramePicker onPick={frame => setPickedFrame(frame)} />
-        <DoneButton onClick={finishComposition} />
+        <DoneButton onClick={finishComposition} disabled={!renderComplete} />
     </Mode>;
 }
