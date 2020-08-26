@@ -12,7 +12,7 @@ export default function FramePicker(props) {
     return (
         <div className="frame-picker">
             <h1>
-                Атлас профессий будущего<br />
+                Атлас профессий будущего
                 (выбери свое направление)
             </h1>
             <div className="frames">

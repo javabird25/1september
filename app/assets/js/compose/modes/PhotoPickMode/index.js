@@ -33,7 +33,7 @@ export default function PhotoPickMode(props) {
 
     return (
         <Mode className="photo-pick">
-            <div>
+            <div className="message">
                 <div className="instruction">
                     <p>
                         Поздравляем, ты справился с заданием! Ты очень умный ребенок.

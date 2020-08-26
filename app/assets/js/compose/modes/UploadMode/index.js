@@ -39,7 +39,7 @@ export default function UploadMode(props) {
 
     return (
         <Mode className="upload">
-            <div>
+            <div className="message">
                 <p>
                     Спасибо! Вы можете скачать фотографию с рамкой и поделиться ей, 
                     нажав на кнопку:

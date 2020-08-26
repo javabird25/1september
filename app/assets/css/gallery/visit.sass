@@ -17,13 +17,26 @@ h2
 
 .gallery
     display: grid
-    grid-template-columns: 20% 80%
+    grid-template-columns: 1fr 6fr
+
+    @media(max-width: 574px)
+        display: flex
+        flex-direction: column-reverse
 
 .stats
     +card.card
 
+    font-size: 85%
+
+    @media(max-width: 574px)
+        margin-bottom: 5rem
+
     h1
-        font-size: 14pt
+        font-size: 85%
     
     table, th, td
         border: none
+        text-align: center
+
+    table
+        width: 100%

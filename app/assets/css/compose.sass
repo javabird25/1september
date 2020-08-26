@@ -85,6 +85,11 @@ body
                 transform: translateX(-50%)
                 font-size: 14pt
                 color: firebrick
+                width: 75%
+                text-align: center
+
+                @media(max-width: 768px)
+                    font-size: 11pt
 
         .frame-picker
             +card.card
@@ -95,12 +100,23 @@ body
                 font-size: large
                 color: firebrick
 
+                @media(max-width: 768px)
+                    margin: 0
+                    font-size: 9pt
+
             .frames
                 display: flex
                 flex-wrap: wrap
 
+                @media(max-width: 768px)
+                    height: 100%
+                    flex-wrap: nowrap
+
                 .frame
                     width: 200px
+                    height: 100%
+                    @media(max-width: 768px)
+                        width: unset
                     object-fit: contain
 
             @media(max-width: 768px)
@@ -110,6 +126,7 @@ body
                 grid:
                     row: 2
                     column: 1
+                height: 100%
 
         button.done
             place-self: center
@@ -140,3 +157,6 @@ body
                     margin-right: $margin
                 &:last-child
                     margin-left: $margin
+
+.message
+    max-width: 768px
