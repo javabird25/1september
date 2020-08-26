@@ -18,6 +18,7 @@ h2
 .gallery
     display: grid
     grid-template-columns: 1fr 6fr
+    position: relative
 
     @media(max-width: 574px)
         display: flex
@@ -26,10 +27,15 @@ h2
 .stats
     +card.card
 
+    align-self: start
     font-size: 85%
+    position: sticky
+    top: 8px
 
     @media(max-width: 574px)
         margin-bottom: 5rem
+        position: unset
+        align-self: unset
 
     h1
         font-size: 85%
