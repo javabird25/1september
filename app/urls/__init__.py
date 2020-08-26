@@ -8,6 +8,7 @@ urlpatterns = [
     path("photocompose/", include("app.urls.composition")),
     path("", include("app.urls.rest")),
     path("gallery/", views.GalleryView.as_view()),
+    path("gallery/<int:pk>/", views.GalleryPhotoView.as_view()),
     path("gallery/moderation/", views.GalleryModerationView.as_view(), name="moderation"),
     path("gallery/moderation/action/", views.moderation_action),
     path("gallery/moderation/batch-action/", views.moderation_action_batch),

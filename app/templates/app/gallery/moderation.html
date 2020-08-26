@@ -19,10 +19,10 @@
 
 {% block photo_elements %}
     <div class="moderation-buttons">
-        <button class="approve" onclick="moderationAction('approve', this)">
+        <button class="approve" onclick="moderationAction('approve', this, event)">
             <span class="material-icons">done</span>
         </button>
-        <button class="delete" onclick="moderationAction('delete', this)">
+        <button class="delete" onclick="moderationAction('delete', this, event)">
             <span class="material-icons">delete</span>
         </button>
     </div>

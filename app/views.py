@@ -2,7 +2,7 @@ import os
 
 from django.conf import settings
 from django.urls import reverse
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -57,6 +57,10 @@ class GalleryView(ListView):
         context = super().get_context_data(**context)
         context["professions_percentages"] = Photo.get_percentages()
         return context
+
+
+class GalleryPhotoView(DetailView):
+    model = Photo
 
 
 class GalleryModerationView(LoginRequiredMixin, ListView):

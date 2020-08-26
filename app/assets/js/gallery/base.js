@@ -17,3 +17,8 @@ window.goToPage = () => {
 
     window.location.href = "?page=" + desiredPage;
 };
+
+window.photoDetail = (photoDiv) => {
+    const id = $(photoDiv).attr("data-photo-id");
+    window.open(`/gallery/${id}/`, "_blank");
+};

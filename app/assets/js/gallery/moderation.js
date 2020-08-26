@@ -11,7 +11,9 @@ function reloadIfAllDone() {
     }
 }
 
-window.moderationAction = (action, button) => {
+window.moderationAction = (action, button, event) => {
+    event.stopPropagation();
+
     let $button = $(button);
     let photo = $button.parents(".photo");
     let id = photo.attr("data-photo-id");
