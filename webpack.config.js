@@ -13,6 +13,7 @@ module.exports = {
     gallery_visit: "./app/assets/js/gallery/visit.js",
     gallery_moderation: "./app/assets/js/gallery/moderation.js",
     hobby_groups: "./app/assets/css/hobby-groups.sass",
+    full_photo: "./app/assets/css/full-photo.sass",
   },
   output: {
     path: path.resolve('./webpack-out'),
