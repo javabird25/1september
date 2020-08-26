@@ -45,7 +45,7 @@ export default function PhotoPickMode(props) {
                         После чего кликни на кнопку "Продолжить".
                     </p>
                 </div>
-                <input type="file" ref={fileInputRef} />
+                <input type="file" ref={fileInputRef} accept="image/*" />
                 <button onClick={loadPhoto} className="green-button full-width">Продолжить</button>
             </div>
         </Mode>
