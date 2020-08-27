@@ -7,6 +7,7 @@
 {% block head %}
     {{ block.super }}
     {% render_bundle 'gallery_visit' 'css' %}
+    {% render_bundle 'gallery_visit' 'js' %}
 {% endblock head %}
 
 {% block body %}
@@ -47,5 +48,4 @@
         </div>
         {{ block.super }}
     </div>
-    {% render_bundle 'gallery_visit' 'js' %}
 {% endblock body %}

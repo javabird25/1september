@@ -5,6 +5,8 @@
 {% block head %}
     {% render_bundle 'gallery_base' 'css' %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% render_bundle 'gallery_base' 'js' %}
 {% endblock %}
 
 {% block body %}
@@ -46,6 +48,4 @@
             {% endif %}
         </div>
     </div>
-
-    {% render_bundle 'gallery_base' 'js' %}
 {% endblock %}

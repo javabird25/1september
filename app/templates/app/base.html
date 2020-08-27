@@ -10,12 +10,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     {% render_bundle 'common' 'css' %}
+    {% render_bundle 'common' 'js'%}
 
     {% block head %}{% endblock %}
 </head>
 <body>
     {% block body %}{% endblock %}
-
-    {% render_bundle 'common' 'js'%}
 </body>
 </html>

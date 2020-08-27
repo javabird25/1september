@@ -6,11 +6,11 @@
 {% block head %}
     {{ block.super }}
     {% render_bundle 'gallery_moderation' 'css' %}
+    {% render_bundle 'gallery_moderation' 'js' %}
 {% endblock head %}
 
 {% block body %}
     {{ block.super }}
-    {% render_bundle 'gallery_moderation' 'js' %}
     <button class="approve-all" onclick="approveAll()">
         <div class="material-icons">done</div>
         <div>Одобрить все на этой странице</div>

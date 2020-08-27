@@ -6,10 +6,9 @@
 
 {% block head %}
     {% render_bundle 'full_photo' 'css' %}
+    {% render_bundle 'full_photo' 'js' %}
 {% endblock %}
 
 {% block body %}
     <img src="{% get_media_prefix %}{{ object.photo }}">
-
-    {% render_bundle 'full_photo' 'js' %}
 {% endblock %}
