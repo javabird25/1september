@@ -1,4 +1,5 @@
 {% extends 'app/gallery/base.html' %}
+{% load static %}
 {% load render_bundle from webpack_loader %}
 
 {% block title %}Моя будущая профессия{% endblock %}
@@ -33,6 +34,16 @@
                 </p>
                 <a href="/hobby-groups/" class="green-button" target="_blank">Список кружков</a>
             </div>
+            <hr noshade>
+            <a href="https://minobr74.ru/" target="_blank">
+                <img src="{% static 'banners/doe-obl.jpg' %}">
+            </a>
+            <a href="https://magobr.educhel.ru/" target="_blank">
+                <img src="{% static 'banners/doe-city.jpg' %}">
+            </a>
+            <a href="https://vk.com/kvantorium74" target="_blank">
+                <img src="{% static 'banners/kvantorium.jpg' %}">
+            </a>
         </div>
         {{ block.super }}
     </div>
