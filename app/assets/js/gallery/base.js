@@ -1,6 +1,6 @@
 import '../../css/gallery/base.sass';
 
-import $ from 'jquery';
+import 'jquery-zoom';
 
 window.goToPage = () => {
     let desiredPage;
@@ -22,3 +22,7 @@ window.photoDetail = (photoDiv) => {
     const id = $(photoDiv).attr("data-photo-id");
     window.open(`/gallery/${id}/`, "_blank");
 };
+
+$(() => {
+    $(".photo").zoom();
+});
