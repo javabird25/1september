@@ -39,6 +39,10 @@ export default function CompositionMode(props) {
             onRenderComplete={() => setRenderComplete(true)}
         />
         <FramePicker onPick={frame => setPickedFrame(frame)} />
-        <DoneButton onClick={finishComposition} disabled={!renderComplete} />
+        <DoneButton
+            onClick={finishComposition}
+            disabled={!pickedFrame}
+            silentlyDisabled={!renderComplete}
+        />
     </Mode>;
 }
