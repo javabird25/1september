@@ -9,6 +9,20 @@
 =subtle-shadow
     box-shadow: 0 0 2px colors.$shadow-color
 
+.bell
+    width: 20vw
+    position: fixed
+    top: 8px
+    right: 8px
+    opacity: 0.5
+
+    @media(max-width: 729px)
+        position: static
+        width: 100%
+        height: 150px
+        object-fit: contain
+        opacity: 1
+
 .greeting
     +card.card
     margin-bottom: 1rem
