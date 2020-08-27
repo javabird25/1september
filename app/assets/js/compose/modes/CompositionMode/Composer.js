@@ -79,7 +79,7 @@ export default function Composer(props) {
             ctx.drawImage(frameObj, 0, 0);
             props.onRenderComplete();
         });
-    }, [props.frame, photoCoords]);
+    }, [props.frame, photoCoords, photoScale]);
 
     // Установка фотографии в центр пространства в рамке
     useEffect(() => {
