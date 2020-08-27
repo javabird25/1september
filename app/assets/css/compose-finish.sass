@@ -1,11 +1,14 @@
 @use "card"
 @use "center"
 @use "button"
+@use "embed-responsively"
 
 body
     +center.center
-    height: 100vh
 
     > div
         +card.card
         max-width: 768px
+
+.embed-container
+    margin-top: 1rem
