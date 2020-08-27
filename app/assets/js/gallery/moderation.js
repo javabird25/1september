@@ -26,7 +26,7 @@ window.moderationAction = (action, button, event) => {
         contentType: "application/json",
         processData: false,
         success: () => {
-            photo.css("opacity", "0");
+            photo.addClass("processed");
             reloadIfAllDone();
         },
         headers: {
@@ -36,7 +36,7 @@ window.moderationAction = (action, button, event) => {
 };
 
 window.approveAll = () => {
-    let photos = $(".photo:not([opacity=0])");
+    let photos = $(".photo:not(.processed)");
     let ids = photos.map(function() { return $(this).attr("data-photo-id"); }).get();
     $.post({
         url: "/gallery/moderation/batch-action/",
