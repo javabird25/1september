@@ -1,4 +1,5 @@
 @use "../card"
+@use "../button"
 
 .photo
     $size: 400px
@@ -23,15 +24,12 @@ h2
     .gallery
         flex-direction: column-reverse
 
-    .stats-wrapper, .photos
+    .stats, .photos
         width: 100% !important
 
     .stats
         margin-bottom: 5rem
         position: unset
-
-.stats-wrapper
-    width: 20%
 
 .photos
     width: 80%
@@ -40,8 +38,8 @@ h2
 .stats
     +card.card
 
-    align-self: start
     font-size: 85%
+    width: 20%
     position: sticky
     top: 8px
 
