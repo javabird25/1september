@@ -19,6 +19,11 @@ window.goToPage = () => {
 };
 
 window.photoDetail = (photoDiv) => {
-    const id = $(photoDiv).attr("data-photo-id");
-    window.open(`/gallery/${id}/`, "_blank");
+    const src = $(photoDiv).children("img").attr("src");
+    $(".full-photo-dialog img").attr("src", src);
+    $(".full-photo-dialog").show();
+};
+
+window.closeDialog = () => {
+    $(".full-photo-dialog").hide();
 };
