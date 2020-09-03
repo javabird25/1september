@@ -8,7 +8,7 @@ import FramePicker from './FramePicker';
 import DoneButton from './DoneButton';
 
 function getProfessionName(frameSrc) {
-    return frameSrc.match(new RegExp("/([а-яА-Я ]+)_"))[1];
+    return frameSrc.match(new RegExp("/([а-яА-Я\\w ]+)_"))[1];
 }
 
 export default function CompositionMode(props) {
@@ -21,8 +21,8 @@ export default function CompositionMode(props) {
         canvas.toBlob(blob => {
             props.changeMode(
                 UploadMode,
-                { 
-                    composedPhotoBlob: blob, 
+                {
+                    composedPhotoBlob: blob,
                     profession: getProfessionName(pickedFrame)
                 }
             );
