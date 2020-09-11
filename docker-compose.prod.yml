@@ -13,8 +13,8 @@ services:
       - app
     build: ./nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "9080:80"
+      - "9443:443"
     volumes:
       - static:/static
       - media:/media
